@@ -14,6 +14,7 @@ app.use(express.json());
 // Routes
 
 app.use(require("./routes/products"));
+app.use(require("./routes/users"));
 
 // Starting the server
 

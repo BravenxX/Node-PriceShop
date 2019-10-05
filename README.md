@@ -1,4 +1,4 @@
-# Node-Express MySql - PriceShop
+# Node-Express MySql - PriceShop Backend
 
 José N. R.
 
@@ -18,3 +18,7 @@ José N. R.
 - timeago.js: Converte los timestams de la bd en: 2 minutes ago, 2 hours ago, etc..
 - connect-flash: Para poder mostrar mensajes de error y exito cuando el usuario realice una opración
 - express-validator: Para validar los datos que nos envien los usuarios de forma automatica
+
+## Estado
+
+Trabajando...
