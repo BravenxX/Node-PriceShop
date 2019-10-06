@@ -8,6 +8,7 @@ José N. R.
 - MySql
 - Express
 - Nodemon
+- Cors
 - Express-handlebars: Motor de plantillas
 - Express-session: Guardar sesiones en servidor
 - Express-mysql-session: Para guardar las sesiones del servidor en la bd
