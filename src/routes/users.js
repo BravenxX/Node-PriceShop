@@ -57,10 +57,12 @@ router.get("/API/users", (req, res) => {
 });
 
 // GET a user
-router.get("/API/users/:id", (req, res) => {
-  const { id } = req.params;
-  mysqlConnection.query(
-    `SELECT 
+router
+  .route("/API/users/:id")
+  .get((req, res) => {
+    const { id } = req.params;
+    mysqlConnection.query(
+      `SELECT 
         users.id,
         users.email,
         users.name,
@@ -74,31 +76,29 @@ router.get("/API/users/:id", (req, res) => {
             INNER JOIN user_types ON
             operators.user_types_id = user_types.id
                 WHERE users.id = ?`,
-    [id],
-    (err, rows, fields) => {
-      if (!err) {
-        res.json(rows[0]);
-      } else {
-        console.log(err);
+      [id],
+      (err, rows, fields) => {
+        if (!err) {
+          res.json(rows[0]);
+        } else {
+          console.log(err);
+        }
       }
-    }
-  );
-});
-
-// DELETE a user
-router.delete("/API/users/:id", (req, res) => {
-  const { id } = req.params;
-  mysqlConnection.query(
-    "DELETE FROM users WHERE id = ?",
-    [id],
-    (err, rows, fields) => {
-      if (!err) {
-        res.json({ status: "Product Deleted" });
-      } else {
-        console.log(err);
+    );
+  })
+  .delete((req, res) => {
+    const { id } = req.params;
+    mysqlConnection.query(
+      "DELETE FROM users WHERE id = ?",
+      [id],
+      (err, rows, fields) => {
+        if (!err) {
+          res.json({ status: "Product Deleted" });
+        } else {
+          console.log(err);
+        }
       }
-    }
-  );
-});
+    );
+  });
 
 module.exports = router;

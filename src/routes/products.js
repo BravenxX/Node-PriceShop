@@ -3,6 +3,10 @@ const router = express.Router();
 
 const mysqlConnection = require("../database.js");
 
+/**********
+ *  GETs  *
+ **********/
+
 // GET all Products
 router.get("/", (req, res) => {
   mysqlConnection.query("SELECT * FROM products", (err, rows, fields) => {
@@ -30,6 +34,10 @@ router.get("/:id", (req, res) => {
   );
 });
 
+/**********
+ *  DELETE  *
+ **********/
+
 // DELETE a product
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
@@ -46,6 +54,9 @@ router.delete("/:id", (req, res) => {
   );
 });
 
+/**********
+ *  POST  *
+ **********/
 // FALTA CREAR PROCEDIMIENTOS DE ALMACENADOS :
 
 // INSERT a product
@@ -66,6 +77,10 @@ router.post("/", (req, res) => {
     }
   });
 });
+
+/**********
+ *  PUT  *
+ **********/
 
 router.put("/:id", (req, res) => {
   const { name, salary } = req.body;
