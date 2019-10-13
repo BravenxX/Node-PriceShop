@@ -92,6 +92,8 @@ usersCtrl.validateUser = (req, res) => {
 
   const { email, password } = req.body;
 
+  console.log("email", email);
+  console.log("password", password);
   mysqlConnection.query(
     `SELECT 
             users.id,
@@ -111,18 +113,22 @@ usersCtrl.validateUser = (req, res) => {
     [email, password],
     (err, rows, fields) => {
       if (!err) {
-        if (rows.length != 0)
+        if (rows.length != 0) {
           res.json({
             validated: true,
             message: "Usuario validado"
           });
-        else {
+        } else {
           res.json({
             validated: false,
             message: "Usuario no validado"
           });
         }
       } else {
+        res.json({
+          validated: false,
+          message: "Ha ocurrido un error"
+        });
         console.log(err);
       }
     }
