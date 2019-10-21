@@ -1,4 +1,4 @@
-const mysqlConnection = require("../database.js");
+const mysqlConnection = require("../database/database");
 
 const usersCtrl = {};
 
@@ -88,12 +88,8 @@ usersCtrl.deleteUser = (req, res) => {
 };
 
 usersCtrl.validateUser = (req, res) => {
-  console.log("req", req.body);
-
   const { email, password } = req.body;
 
-  console.log("email", email);
-  console.log("password", password);
   mysqlConnection.query(
     `SELECT 
             users.id,
